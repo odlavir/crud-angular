@@ -8,14 +8,15 @@ import { Course } from './../model/course';
   providedIn: 'root',
 })
 export class CoursesService {
-  private readonly API = '/assets/courses.json';
+  private readonly API = 'api/courses';
+  // private readonly API = '/assets/courses.json';
 
   constructor(private httpCLient: HttpClient) {}
 
   list() {
     return this.httpCLient.get<Course[]>(this.API).pipe(
       first(),
-      delay(2000),
+      // delay(2000),
       tap((courses) => console.log(courses))
     );
   }
