@@ -7,7 +7,11 @@ import { CoursesComponent } from './containers/courses/courses.component';
 
 const routes: Routes = [
   { path: '', component: CoursesComponent },
-  { path: 'new', component: CourseFormComponent },
+  {
+    path: 'new',
+    component: CourseFormComponent,
+    resolve: { course: CourseResolver },
+  },
   {
     path: 'edit/:id',
     component: CourseFormComponent,
