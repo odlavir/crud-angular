@@ -34,13 +34,17 @@ export class CoursesService {
     return this.create(record);
   }
 
+  remove(id: string) {
+    return this.httpCLient.delete(`${this.API}/${id}`).pipe(first());
+  }
+
   private create(record: Partial<Course>) {
-    return this.httpCLient.post<Course[]>(this.API, record).pipe(first());
+    return this.httpCLient.post<Course>(this.API, record).pipe(first());
   }
 
   private update(record: Partial<Course>) {
     return this.httpCLient
-      .put<Course[]>(`${this.API}/${record._id}`, record)
+      .put<Course>(`${this.API}/${record._id}`, record)
       .pipe(first());
   }
 }
